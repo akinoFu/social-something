@@ -1,1 +1,1 @@
-# social-something-terraform
+# Social Something
