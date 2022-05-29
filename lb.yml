@@ -1,0 +1,8 @@
+#cloud-config
+write_files:
+  - path: /etc/nginx/upstream.conf
+    owner: root:root
+    permissions: "0644"
+    content: "${ips}"
+runcmd:
+  - [ systemctl, restart, --no-block, nginx ]

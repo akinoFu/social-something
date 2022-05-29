@@ -1,0 +1,14 @@
+#cloud-config
+write_files:
+  - path: /home/ec2-user/social_something_full/app.env
+    owner: ec2-user:ec2-user
+    permissions: "0644"
+    content: |
+      BUCKET_NAME='${bucket_name}'
+      BUCKET_REGION='${region}'
+      MYSQL_HOST=${rds_endpoint}
+      MYSQL_USER='web_app'
+      MYSQL_PASSWORD='MyNewPass1!'
+      MYSQL_DATABASE='social_something'
+runcmd:
+  - [ systemctl, restart, --no-block, social_something.service ]
